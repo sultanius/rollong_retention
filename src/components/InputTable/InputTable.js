@@ -49,7 +49,7 @@ const AddInput = () => {
       .then(res => {
         if(res.ok) {
           console.log('eee');
-          history.push('http://localhost:3000')
+          history.push('/')
         }
       })
       .then(data => console.log(data))
@@ -72,6 +72,7 @@ const AddInput = () => {
     {inputList.map((item, i) => {
       return (
         <div className={`${style.main} ${style.mr}`} key={i}>
+          <div className={`${style.line}`}>
         <input
           type="text"
           name="userId"
@@ -79,6 +80,8 @@ const AddInput = () => {
           value={item.userId}
           onChange={ (e) => handleChange(e, i)}
         />
+        </div>
+        <div className={`${style.line}`}>
         <input
           type="text"
           name="dateRegistration"
@@ -86,6 +89,8 @@ const AddInput = () => {
           value={item.dateRegistration}
           onChange={ (e) => handleChange(e, i)}
         />
+        </div>
+        <div className={`${style.line}`}>
         <input
           type="text"
           name="dateLastActivity"
@@ -93,16 +98,21 @@ const AddInput = () => {
           value={item.dateLastActivity}
           onChange={(e) => handleChange(e, i)}
         />
+        </div>
+        <div className={`${style.line}`}>
         {inputList.length !== 1 && <input
           type="button"
           value="remove"
           onClick={() => handleRemoveInput(i)}
         />}
+        </div>
+        <div className={`${style.line}`}>
         {inputList.length - 1 === i && <input
           type="button"
-          value="add"
+          value="new line"
           onClick={handleAddInput}
         />}
+        </div>
       </div>
       )
     })}
@@ -110,7 +120,7 @@ const AddInput = () => {
       <div className={style.butt}>
         <button onClick={calculate}>Calculate rolling retention 7 days</button>
       </div>
-      <div className={style.butt} style={{marginLeft: 400}}>
+      <div className={style.butt} style={{}}>
         <form onSubmit={ () => saveFunc() }>
           <button>SAVE</button>
         </form>
