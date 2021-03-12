@@ -5,6 +5,7 @@ import style from './inputTable.module.css'
 
 const AddInput = () => {
   const history = useHistory();
+  const api = 'https://back-retention.herokuapp.com'
 
   const [inputList, setInputList] = React.useState([
     { userId:"", dateRegistration: "",  dateLastActivity: "", },
@@ -37,7 +38,7 @@ const AddInput = () => {
   }
   
   const saveFunc = (e) => {
-    fetch(`http://localhost:4200/api/users`, {
+    fetch(`${api}/api/users`, {
         method: "POST",
         headers:{ 
           "Content-Type": "application/json" ,
@@ -55,7 +56,7 @@ const AddInput = () => {
   }
 
   const calculate = () => {
-    fetch(`http://localhost:4200/api/retention`)
+    fetch(`${api}/api/retention`)
     .then(res => res.json())
     .then(data => setResult(data.answer))
   }
