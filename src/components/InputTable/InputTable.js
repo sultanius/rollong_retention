@@ -5,7 +5,9 @@ import style from './inputTable.module.css'
 
 const AddInput = () => {
   const history = useHistory();
+
   const api = 'https://back-retention.herokuapp.com';
+
 
   const [inputList, setInputList] = React.useState([
     { userId:"", dateRegistration: "",  dateLastActivity: "", },
